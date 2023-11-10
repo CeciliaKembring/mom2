@@ -37,9 +37,14 @@ app.get('/api/courses/:id', (req, res) => {
 // DELETE, för att radera enskild ID
 app.delete('/api/courses/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    courses = courses.filter(course => course._id !== id);
+    const courseIndex = courses.findIndex(course => course._id === id);
 
-    res.send(`Anrop har skickats för att radera kurs med ID: ${id}`);
+    if (courseIndex !== -1) {
+        courses.splice(courseIndex, 1);
+        res.json({ message: 'Kurs raderad' });
+    } else {
+        res.status(404).json({ error: 'Kan ej hitta kurs' });
+    }
 });
 
 app.listen(port, () => {
