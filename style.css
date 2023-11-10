@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+    padding: 20px;
+    margin-top: 10px;
+}
+table{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+tr, td, th{
+    border: solid black .2px;
+}
+th, td{
+    padding: 10px;
+}

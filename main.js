@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 // En array för att lagra kurser
 let courses = [
@@ -33,7 +36,7 @@ app.get('/api/courses/:id', (req, res) => {
 
 // DELETE, för att radera enskild ID
 app.delete('/api/courses/:id', (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     courses = courses.filter(course => course._id !== id);
 
     res.send(`Anrop har skickats för att radera kurs med ID: ${id}`);
